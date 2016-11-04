@@ -21,6 +21,7 @@
 		camera = new THREE.PerspectiveCamera(100, WIDTH/HEIGHT, 0.1, 1000);
 		renderer = new THREE.WebGLRenderer();
         
+		scene.add(camera);
 		renderer.setSize(WIDTH, HEIGHT);
 		document.body.appendChild(renderer.domElement);
 	}
