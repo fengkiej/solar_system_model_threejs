@@ -10,12 +10,22 @@
 
 <!-- Three.js Start from Here -->
 <script>
-    // basic requirements a scene, a camera, a renderer and image for texturing //
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    var scene, camera, renderer;
+
+	function init(){
+        // basic requirements a scene, a camera, a renderer and image for texturing //
+		var WIDTH = window.innerWidth;
+		var HEIGHT = window.innerHeight;
+
+		scene = new THREE.Scene();
+		camera = new THREE.PerspectiveCamera(100, WIDTH/HEIGHT, 0.1, 1000);
+		renderer = new THREE.WebGLRenderer();
+        
+		renderer.setSize(WIDTH, HEIGHT);
+		document.body.appendChild(renderer.domElement);
+	}
+    
+    init();
     var image;
 
     // planet models //
