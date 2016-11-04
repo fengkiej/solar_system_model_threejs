@@ -1,0 +1,33 @@
+<DOCTYPE! html>
+<html lang = "en">
+<head>
+    <meta charset= "UTF-8">
+    <title> Solar System </title>
+</head>
+<body>
+<script src = "js/Three.js_Core/three.min.js"></script>
+<script src = "js/Additional_Libraries/OrbitControls.js"></script>
+
+<!-- Three.js Start from Here -->
+<script>
+    // basic requirements a scene, a camera, a renderer and image for texturing //
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    var image;
+
+    // planet models //
+    var sun_geometry = new THREE.SphereGeometry(69.5, 32, 16);
+    var mercury_geometry = new THREE.SphereGeometry(0.244, 32, 16);
+    var venus_geometry = new THREE.SphereGeometry(0.6052, 32, 16);
+    var earth_geometry = new THREE.SphereGeometry(0.6378, 32, 16);
+    var mars_geometry = new THREE.SphereGeometry(0.3397, 32, 16);
+    var jupiter_geometry = new THREE.SphereGeometry(7.1492, 32, 16);
+    var saturn_geometry = new THREE.SphereGeometry(6.0268, 32, 16);
+    var uranus_geometry = new THREE.SphereGeometry(2.5559, 32, 16);
+    var neptune_geometry = new THREE.SphereGeometry(2.4766, 32, 16);
+</script>
+</body>
+</html>
