@@ -33,7 +33,7 @@
         scene.add(camera);
         renderer.setSize(WIDTH, HEIGHT);
         document.body.appendChild(renderer.domElement);
-        camera.position.z = 100;
+        camera.position.z = 1;
         // Create an event listener that resizes the renderer with the browser window.
         window.addEventListener('resize', function() {
             var WIDTH = window.innerWidth;
@@ -99,12 +99,12 @@
 
 
     scene.add(earth);
-
-    var render;
+    scene.add(sun);
+    
     function render() {
         requestAnimationFrame( render );
 
-        earth.rotation.y += 0.05;
+        earth.rotation.y += 0.02;
 
         renderer.render(scene, camera);
     };
