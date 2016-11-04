@@ -19,6 +19,7 @@
     var image;
 
     // planet models //
+        // planets geometry
     var sun_geometry = new THREE.SphereGeometry(69.5, 32, 16);
     var mercury_geometry = new THREE.SphereGeometry(0.244, 32, 16);
     var venus_geometry = new THREE.SphereGeometry(0.6052, 32, 16);
@@ -28,6 +29,42 @@
     var saturn_geometry = new THREE.SphereGeometry(6.0268, 32, 16);
     var uranus_geometry = new THREE.SphereGeometry(2.5559, 32, 16);
     var neptune_geometry = new THREE.SphereGeometry(2.4766, 32, 16);
+
+        // planet textures
+    var sun_texture = THREE.ImageUtils.loadTexture('img/sun.jpg');
+    var mercury_texture = THREE.ImageUtils.loadTexture('img/mercury.jpg');
+    var venus_texture = THREE.ImageUtils.loadTexture('img/venus.jpg');
+    var earth_texture = THREE.ImageUtils.loadTexture('img/earth.jpg');
+    var mars_texture = THREE.ImageUtils.loadTexture('img/mars.jpg');
+    var jupiter_texture = THREE.ImageUtils.loadTexture('img/jupiter.jpg');
+    var saturn_texture = THREE.ImageUtils.loadTexture('img/saturn.jpg');
+    var uranus_texture = THREE.ImageUtils.loadTexture('img/uranus.jpg');
+    var neptune_texture = THREE.ImageUtils.loadTexture('img/neptune.jpg');
+
+        // planet material
+    var sun_material = new THREE.MeshBasicMaterial({map: sun_texture});
+    var mercury_material = new THREE.MeshBasicMaterial({map: mercury_texture});
+    var venus_material = new THREE.MeshBasicMaterial({map: venus_texture});
+    var earth_material = new THREE.MeshBasicMaterial({map: earth_texture});
+    var mars_material = new THREE.MeshBasicMaterial({map: mars_texture});
+    var jupiter_material = new THREE.MeshBasicMaterial({map: jupiter_texture});
+    var saturn_material = new THREE.MeshBasicMaterial({map: saturn_texture});
+    var uranus_material = new THREE.MeshBasicMaterial({map: uranus_texture});
+    var neptune_material = new THREE.MeshBasicMaterial({map: neptune_texture});
+
+        // planets
+    var sun = new THREE.Mesh(sun_geometry, sun_material);
+    var mercury = new THREE.Mesh(mercury_geometry, mercury_material);
+    var venus = new THREE.Mesh(venus_geometry, venus_material);
+    var earth = new THREE.Mesh(earth_geometry, earth_material);
+    var mars = new THREE.Mesh(mars_geometry, mars_material);
+    var jupiter = new THREE.Mesh(jupiter_geometry, jupiter_material);
+    var saturn = new THREE.Mesh(saturn_geometry, saturn_material);
+    var uranus = new THREE.Mesh(uranus_geometry, uranus_material);
+    var neptune = new THREE.Mesh(neptune_geometry, neptune_material);
+    
+    scene.add(sun);
+
 </script>
 </body>
 </html>
