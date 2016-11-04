@@ -33,7 +33,7 @@
             scene.add(camera);
             renderer.setSize(WIDTH, HEIGHT);
             document.body.appendChild(renderer.domElement);
-            
+            camera.position.z = 100;
             // Create an event listener that resizes the renderer with the browser window.
             window.addEventListener('resize', function() {
                 var WIDTH = window.innerWidth;
@@ -43,26 +43,11 @@
                 camera.updateProjectionMatrix();
                 });
         }
-        
-<<<<<<< HEAD
-		scene.add(camera);
-		renderer.setSize(WIDTH, HEIGHT);
-		document.body.appendChild(renderer.domElement);
-		
-		// Create an event listener that resizes the renderer with the browser window.
-		window.addEventListener('resize', function() {
-      		var WIDTH = window.innerWidth;
-          	var HEIGHT = window.innerHeight;
-      		renderer.setSize(WIDTH, HEIGHT);
-      		camera.aspect = WIDTH / HEIGHT;
-      		camera.updateProjectionMatrix();
-    		});
-	}
     
     init();
     var image;
 
-        // planet textures
+    // planet textures
     var loader = new THREE.TextureLoader();
     var sun_texture, mercury_texture, venus_texture, earth_texture, mars_texture, jupiter_texture, saturn_texture;
     var uranus_texture, neptune_texture;
@@ -76,24 +61,21 @@
     uranus_texture = loader.load('img/uranus.jpg');
     neptune_texture = loader.load('img/neptune.jpg');
 
-
-            // planet material
-        var sun_material = new THREE.MeshBasicMaterial({map: sun_texture});
-        var mercury_material = new THREE.MeshBasicMaterial({map: mercury_texture});
-        var venus_material = new THREE.MeshBasicMaterial({map: venus_texture});
-        var earth_material = new THREE.MeshBasicMaterial({map: earth_texture});
-        var mars_material = new THREE.MeshBasicMaterial({map: mars_texture});
-        var jupiter_material = new THREE.MeshBasicMaterial({map: jupiter_texture});
-        var saturn_material = new THREE.MeshBasicMaterial({map: saturn_texture});
-        var uranus_material = new THREE.MeshBasicMaterial({map: uranus_texture});
-        var neptune_material = new THREE.MeshBasicMaterial({map: neptune_texture});
+    // planet material
+    var sun_material = new THREE.MeshBasicMaterial({map: sun_texture});
+    var mercury_material = new THREE.MeshBasicMaterial({map: mercury_texture});
+    var venus_material = new THREE.MeshBasicMaterial({map: venus_texture});
+    var earth_material = new THREE.MeshBasicMaterial({map: earth_texture});
+    var mars_material = new THREE.MeshBasicMaterial({map: mars_texture});
+    var jupiter_material = new THREE.MeshBasicMaterial({map: jupiter_texture});
+    var saturn_material = new THREE.MeshBasicMaterial({map: saturn_texture});
+    var uranus_material = new THREE.MeshBasicMaterial({map: uranus_texture});
+     var neptune_material = new THREE.MeshBasicMaterial({map: neptune_texture});
 
     scene.add(earth);
 
-    camera.position.z = 100;
-
     var render;
-    render = function () {
+    function render() {
         requestAnimationFrame( render );
         
         earth.rotation.y += 0.05;
