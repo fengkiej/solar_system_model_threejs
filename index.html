@@ -1,4 +1,4 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
 <html lang = "en">
 <head>
     <meta charset= "UTF-8">
@@ -27,7 +27,7 @@
 		
 		// Create an event listener that resizes the renderer with the browser window.
 		window.addEventListener('resize', function() {
-      		var WIDTH = window.innerWidth,
+      		var WIDTH = window.innerWidth;
           	var HEIGHT = window.innerHeight;
       		renderer.setSize(WIDTH, HEIGHT);
       		camera.aspect = WIDTH / HEIGHT;
@@ -51,15 +51,18 @@
     var neptune_geometry = new THREE.SphereGeometry(2.4766, 32, 16);
 
         // planet textures
-    var sun_texture = THREE.ImageUtils.loadTexture('img/sun.jpg');
-    var mercury_texture = THREE.ImageUtils.loadTexture('img/mercury.jpg');
-    var venus_texture = THREE.ImageUtils.loadTexture('img/venus.jpg');
-    var earth_texture = THREE.ImageUtils.loadTexture('img/earth.jpg');
-    var mars_texture = THREE.ImageUtils.loadTexture('img/mars.jpg');
-    var jupiter_texture = THREE.ImageUtils.loadTexture('img/jupiter.jpg');
-    var saturn_texture = THREE.ImageUtils.loadTexture('img/saturn.jpg');
-    var uranus_texture = THREE.ImageUtils.loadTexture('img/uranus.jpg');
-    var neptune_texture = THREE.ImageUtils.loadTexture('img/neptune.jpg');
+    var loader = new THREE.TextureLoader();
+    var sun_texture, mercury_texture, venus_texture, earth_texture, mars_texture, jupiter_texture, saturn_texture;
+    var uranus_texture, neptune_texture;
+    sun_texture = loader.load("img/sun.jpg");
+    mercury_texture = loader.load('img/mercury.jpg');
+    venus_texture = loader.load('img/venus.jpg');
+    earth_texture = loader.load('img/earth.jpg');
+    mars_texture = loader.load('img/mars.jpg');
+    jupiter_texture = loader.load('img/jupiter.jpg');
+    saturn_texture = loader.load('img/saturn.jpg');
+    uranus_texture = loader.load('img/uranus.jpg');
+    neptune_texture = loader.load('img/neptune.jpg');
 
         // planet material
     var sun_material = new THREE.MeshBasicMaterial({map: sun_texture});
@@ -83,7 +86,20 @@
     var uranus = new THREE.Mesh(uranus_geometry, uranus_material);
     var neptune = new THREE.Mesh(neptune_geometry, neptune_material);
     
-    scene.add(sun);
+    scene.add(earth);
+
+    camera.position.z = 100;
+
+    var render;
+    render = function () {
+        requestAnimationFrame( render );
+        
+        earth.rotation.y += 0.05;
+
+        renderer.render(scene, camera);
+    };
+
+    render();
 
 </script>
 </body>
