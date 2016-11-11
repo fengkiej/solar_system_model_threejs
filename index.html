@@ -21,8 +21,8 @@
 
 <!-- Three.js Start from Here -->
 <script>
-    var parent, renderer, scene, camera, controls;
     var sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
+    var p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, renderer, scene, camera, controls, container;
     var clock = new THREE.Clock();
     init();
     animate();
@@ -50,7 +50,7 @@
     // camera
         camera = new THREE.PerspectiveCamera(45, WIDTH/HEIGHT, 1, 10e7);
         scene.add(camera);
-        camera.position.set(5, 5, 40)
+        camera.position.set(5, 5, 40);
 
     // controls
         function setControl(camera, container){
@@ -75,7 +75,7 @@
         var sunGeometry = new THREE.SphereGeometry(10.95, 32, 32, 0, 6.3, 0, 3.1);
         var mercuryGeometry = new THREE.SphereGeometry(2.36, 32, 32, 0, 6.3, 0, 3.1);
         var venusGeometry = new THREE.SphereGeometry(4.041, 32, 32, 0, 6.3, 0, 3.1);
-        var earthGeometry = new THREE.SphereGeometry(0.06361, 32, 32, 0, 6.3, 0, 3.1);
+        var earthGeometry = new THREE.SphereGeometry(1.06361, 32, 32, 0, 6.3, 0, 3.1);
         var marsGeometry = new THREE.SphereGeometry(0.03385, 32, 32, 0, 6.3, 0, 3.1);
         var jupiterGeometry = new THREE.SphereGeometry(0.6980, 32, 32, 0, 6.3, 0, 3.1);
         var saturnGeometry = new THREE.SphereGeometry(0.5817, 32, 32, 0, 6.3, 0, 3.1);
@@ -107,19 +107,47 @@
         var neptuneMaterial = new THREE.MeshBasicMaterial({map: neptuneTexture});
 
     // parent
-        parent = new THREE.Object3D();
-        scene.add(parent);
+        p0 = new THREE.Object3D();
+        scene.add(p0);
+        p1 = new THREE.Object3D();
+        scene.add(p1);
+        p2 = new THREE.Object3D();
+        scene.add(p2);
+        p3 = new THREE.Object3D();
+        scene.add(p3);
+        p4 = new THREE.Object3D();
+        scene.add(p4);
+        p5 = new THREE.Object3D();
+        scene.add(p5);
+        p6 = new THREE.Object3D();
+        scene.add(p6);
+        p7 = new THREE.Object3D();
+        scene.add(p7);
+        p8 = new THREE.Object3D();
+        scene.add(p8);
 
     // pivots
+        var pivot0 = new THREE.Object3D();
         var pivot1 = new THREE.Object3D();
         var pivot2 = new THREE.Object3D();
         var pivot3 = new THREE.Object3D();
-        pivot1.rotation.z = 0;
-        pivot2.rotation.z = 2 * Math.PI / 3;
-        pivot3.rotation.z = 4 * Math.PI / 3;
-        parent.add(pivot1);
-        parent.add(pivot2);
-        parent.add(pivot3);
+        var pivot4 = new THREE.Object3D();
+        var pivot5 = new THREE.Object3D();
+        var pivot6 = new THREE.Object3D();
+        var pivot7 = new THREE.Object3D();
+        var pivot8 = new THREE.Object3D();
+
+        // rotation settings
+        pivot0.rotation.z = 0;
+        pivot1.rotation.z = 2 * Math.PI / 3;
+        pivot2.rotation.z = 4 * Math.PI / 3;
+        pivot3.rotation.z = 8 * Math.PI / 3;
+
+        // object animation setup
+        p0.add(pivot0);
+        p1.add(pivot1);
+        p2.add(pivot2);
+        p3.add(pivot3);
 
     // mesh
         sun = new THREE.Mesh(sunGeometry, sunMaterial);
@@ -133,21 +161,25 @@
         neptune = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
 
         sun.position.x = 0;
-        mercury.position.z = 16;
-        venus.position.z = (16 + 15);
-        pivot1.add(sun);
-        pivot2.add(mercury);
-        pivot3.add(venus);
+        mercury.position.z = 57.91;
+        venus.position.z = 108.2;
+        earth.position.z = 149.6;
+        pivot0.add(sun);
+        pivot1.add(mercury);
+        pivot2.add(venus);
+        pivot3.add(earth);
     }
 
     function animate() {
         var delta = clock.getDelta();
 
         requestAnimationFrame( animate );
-        //parent.rotation.y += 0.01;
-        
-        mercury.position.x += 0.08;
-        mercury.rotation.y += 0.01;
+
+        p1.rotation.y += 0.01;
+        p2.rotation.y += 0.04;
+        p3.rotation.y += 0.08;
+
+        //mercury.rotation.y += 0.04;
 
         controls.movementSpeed = 20 ;
         controls.update(delta);
