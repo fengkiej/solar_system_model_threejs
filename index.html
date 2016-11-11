@@ -72,15 +72,15 @@
         scene.add(new THREE.AxisHelper(10000));
 
     // geometry
-        var sunGeometry = new THREE.SphereGeometry(10.95, 32, 32, 0, 6.3, 0, 3.1);
-        var mercuryGeometry = new THREE.SphereGeometry(2.36, 32, 32, 0, 6.3, 0, 3.1);
-        var venusGeometry = new THREE.SphereGeometry(4.041, 32, 32, 0, 6.3, 0, 3.1);
-        var earthGeometry = new THREE.SphereGeometry(1.06361, 32, 32, 0, 6.3, 0, 3.1);
-        var marsGeometry = new THREE.SphereGeometry(0.03385, 32, 32, 0, 6.3, 0, 3.1);
-        var jupiterGeometry = new THREE.SphereGeometry(0.6980, 32, 32, 0, 6.3, 0, 3.1);
-        var saturnGeometry = new THREE.SphereGeometry(0.5817, 32, 32, 0, 6.3, 0, 3.1);
-        var uranusGeometry = new THREE.SphereGeometry(0.2532, 32, 32, 0, 6.3, 0, 3.1);
-        var neptuneGeometry = new THREE.SphereGeometry(2.4766, 32, 32, 0, 6.3, 0, 3.1);
+        var sunGeometry = new THREE.SphereGeometry(10, 32, 32, 0, 6.3, 0, 3.1);
+        var mercuryGeometry = new THREE.SphereGeometry(0.34, 32, 32, 0, 6.3, 0, 3.1);
+        var venusGeometry = new THREE.SphereGeometry(0.86, 32, 32, 0, 6.3, 0, 3.1);
+        var earthGeometry = new THREE.SphereGeometry(0.91, 32, 32, 0, 6.3, 0, 3.1);
+        var marsGeometry = new THREE.SphereGeometry(0.48, 32, 32, 0, 6.3, 0, 3.1);
+        var jupiterGeometry = new THREE.SphereGeometry(1.02, 32, 32, 0, 6.3, 0, 3.1);
+        var saturnGeometry = new THREE.SphereGeometry(0.83, 32, 32, 0, 6.3, 0, 3.1);
+        var uranusGeometry = new THREE.SphereGeometry(0.326, 32, 32, 0, 6.3, 0, 3.1);
+        var neptuneGeometry = new THREE.SphereGeometry(0.16, 32, 32, 0, 6.3, 0, 3.1);
 
     // texture
         var loader = new THREE.TextureLoader();
@@ -176,8 +176,8 @@
         requestAnimationFrame( animate );
 
         p1.rotation.y += 0.01;
-        p2.rotation.y += 0.04;
-        p3.rotation.y += 0.08;
+        p2.rotation.y += 0.008;
+        p3.rotation.y += 0.005;
 
         //mercury.rotation.y += 0.04;
 
