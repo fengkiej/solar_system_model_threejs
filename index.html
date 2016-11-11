@@ -18,7 +18,25 @@
 <script src = "js/Three.js_Core/three.min.js"></script>
 <script src = "js/Additional_Libraries/FlyControls.js"></script>
 <script src = "js/Additional_Libraries/OrbitControls.js"></script>
+<script type="application/x-glsl" id="sky-vertex">  
+varying vec2 vUV;
 
+void main() {  
+  vUV = uv;
+  vec4 pos = vec4(position, 1.0);
+  gl_Position = projectionMatrix * modelViewMatrix * pos;
+}
+</script>
+
+<script type="application/x-glsl" id="sky-fragment">  
+uniform sampler2D texture;  
+varying vec2 vUV;
+
+void main() {  
+  vec4 sample = texture2D(texture, vUV);
+  gl_FragColor = vec4(sample.xyz, sample.w);
+}
+</script>
 <!-- Three.js Start from Here -->
 <script>
     var sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
@@ -168,6 +186,8 @@
         pivot1.add(mercury);
         pivot2.add(venus);
         pivot3.add(earth);
+
+	createSkyDome();
     }
 
     function animate() {
@@ -186,6 +206,25 @@
 
         renderer.render(scene, camera);
     }
+
+	function createSkyDome(){
+	var geometry = new THREE.SphereGeometry(3000, 60, 40);  
+	var uniforms = {  
+  		texture: { type: 't', value: THREE.ImageUtils.loadTexture('img/milkyway.jpg') }
+	};
+
+	var material = new THREE.ShaderMaterial( {  
+  		uniforms:       uniforms,
+  		vertexShader:   document.getElementById('sky-vertex').textContent,
+  		fragmentShader: document.getElementById('sky-fragment').textContent
+	});
+
+	skyBox = new THREE.Mesh(geometry, material);  
+	skyBox.scale.set(-1, 1, 1);  
+	skyBox.eulerOrder = 'XZY';  
+	skyBox.renderDepth = 10000.0;  
+	scene.add(skyBox);
+	}
 </script>
 </body>
 </html>
