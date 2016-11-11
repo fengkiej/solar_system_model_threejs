@@ -39,8 +39,8 @@ void main() {
 </script>
 <!-- Three.js Start from Here -->
 <script>
-    var sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
-    var p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, renderer, scene, camera, controls, container;
+    var sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, skyBox;
+    var p0, p1, p2, p3, p4, p5, p6, p7, p8, renderer, scene, camera, controls, container;
     var clock = new THREE.Clock();
     init();
     animate();
@@ -91,14 +91,14 @@ void main() {
 
     // geometry
         var sunGeometry = new THREE.SphereGeometry(10, 32, 32, 0, 6.3, 0, 3.1);
-        var mercuryGeometry = new THREE.SphereGeometry(0.34, 32, 32, 0, 6.3, 0, 3.1);
-        var venusGeometry = new THREE.SphereGeometry(0.86, 32, 32, 0, 6.3, 0, 3.1);
-        var earthGeometry = new THREE.SphereGeometry(0.91, 32, 32, 0, 6.3, 0, 3.1);
-        var marsGeometry = new THREE.SphereGeometry(0.48, 32, 32, 0, 6.3, 0, 3.1);
-        var jupiterGeometry = new THREE.SphereGeometry(1.02, 32, 32, 0, 6.3, 0, 3.1);
-        var saturnGeometry = new THREE.SphereGeometry(0.83, 32, 32, 0, 6.3, 0, 3.1);
-        var uranusGeometry = new THREE.SphereGeometry(0.326, 32, 32, 0, 6.3, 0, 3.1);
-        var neptuneGeometry = new THREE.SphereGeometry(0.16, 32, 32, 0, 6.3, 0, 3.1);
+        var mercuryGeometry = new THREE.SphereGeometry(3.2440, 32, 32, 0, 6.3, 0, 3.1);
+        var venusGeometry = new THREE.SphereGeometry(3.6052, 32, 32, 0, 6.3, 0, 3.1);
+        var earthGeometry = new THREE.SphereGeometry(3.6371, 32, 32, 0, 6.3, 0, 3.1);
+        var marsGeometry = new THREE.SphereGeometry(3.3390, 32, 32, 0, 6.3, 0, 3.1);
+        var jupiterGeometry = new THREE.SphereGeometry(6.69911, 32, 32, 0, 6.3, 0, 3.1);
+        var saturnGeometry = new THREE.SphereGeometry(5.58232, 32, 32, 0, 6.3, 0, 3.1);
+        var uranusGeometry = new THREE.SphereGeometry(4.25362, 32, 32, 0, 6.3, 0, 3.1);
+        var neptuneGeometry = new THREE.SphereGeometry(4.24622, 32, 32, 0, 6.3, 0, 3.1);
 
     // texture
         var loader = new THREE.TextureLoader();
@@ -160,12 +160,22 @@ void main() {
         pivot1.rotation.z = 2 * Math.PI / 3;
         pivot2.rotation.z = 4 * Math.PI / 3;
         pivot3.rotation.z = 8 * Math.PI / 3;
+        pivot4.rotation.z = 16 * Math.PI / 3;
+        pivot5.rotation.z = 32 * Math.PI / 3;
+        pivot6.rotation.z = 64 * Math.PI / 3;
+        pivot7.rotation.z = 128 * Math.PI / 3;
+        pivot8.rotation.z = 256 * Math.PI / 3;
 
         // object animation setup
         p0.add(pivot0);
         p1.add(pivot1);
         p2.add(pivot2);
         p3.add(pivot3);
+        p4.add(pivot4);
+        p5.add(pivot5);
+        p6.add(pivot6);
+        p7.add(pivot7);
+        p8.add(pivot8);
 
     // mesh
         sun = new THREE.Mesh(sunGeometry, sunMaterial);
@@ -178,14 +188,27 @@ void main() {
         uranus = new THREE.Mesh(uranusGeometry, uranusMaterial);
         neptune = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
 
+        // mesh position
         sun.position.x = 0;
         mercury.position.z = 57.91;
         venus.position.z = 108.2;
         earth.position.z = 149.6;
+        mars.position.z = 227.9;
+        jupiter.position.z = 478.5;
+        saturn.position.z = 614.29;
+        uranus.position.z = 728.71;
+        neptune.position.z = 844.98;
+
+        // mesh setup
         pivot0.add(sun);
         pivot1.add(mercury);
         pivot2.add(venus);
         pivot3.add(earth);
+        pivot4.add(mars);
+        pivot5.add(jupiter);
+        pivot6.add(saturn);
+        pivot7.add(uranus);
+        pivot8.add(neptune);
 
 	createSkyDome();
     }
@@ -195,13 +218,33 @@ void main() {
 
         requestAnimationFrame( animate );
 
-        p1.rotation.y += 0.01;
-        p2.rotation.y += 0.008;
-        p3.rotation.y += 0.005;
+        p0.rotation.y += 0.02;
 
-        //mercury.rotation.y += 0.04;
+        p1.rotation.y += 0.0048;
+        p1.rotation.z += 0.008;
 
-        controls.movementSpeed = 20 ;
+        p2.rotation.y += 0.0035;
+        p2.rotation.z += 0.008;
+
+        p3.rotation.y += 0.0030;
+        p3.rotation.z += 0.008;
+
+        p4.rotation.y += 0.0025;
+        p4.rotation.z += 0.008;
+
+        p5.rotation.y += 0.0015;
+        p5.rotation.z += 0.008;
+
+        p6.rotation.y += 0.0010;
+        p6.rotation.z += 0.008;
+
+        p7.rotation.y += 0.0007;
+        p7.rotation.z += 0.008;
+
+        p8.rotation.y += 0.0006;
+        p8.rotation.z += 0.008;
+
+        controls.movementSpeed = 2000 ;
         controls.update(delta);
 
         renderer.render(scene, camera);
