@@ -11,4 +11,4 @@ The purpose of this project is to fulfill the *Computer Graphics Assignment.* Th
 1. defhammam as **Hammam Mahfuzh Sujudi (16429)**
 2. MasiCal354 as **Faisal Malik Widya P. (16723)**
 3. fengkiej as **Fengkie Junis (16724)**
-4. Azzi_en as **N. Izza Mahendra (16729)**
+4. Azzi-en as **N. Izza Mahendra (16729)**
