@@ -22,6 +22,7 @@
 <!-- Three.js Start from Here -->
 <script>
     var parent, renderer, scene, camera, controls;
+    var sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
     var clock = new THREE.Clock();
     init();
     animate();
@@ -121,15 +122,16 @@
         parent.add(pivot3);
 
     // mesh
-        var sun = new THREE.Mesh(sunGeometry, sunMaterial);
-        var mercury = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
-        var venus = new THREE.Mesh(venusGeometry, venusMaterial);
-        var earth = new THREE.Mesh(earthGeometry, earthMaterial);
-        var mars = new THREE.Mesh(marsGeometry, marsMaterial);
-        var jupiter = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
-        var saturn = new THREE.Mesh(saturnGeometry, saturnMaterial);
-        var uranus = new THREE.Mesh(uranusGeometry, uranusMaterial);
-        var neptune = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
+        sun = new THREE.Mesh(sunGeometry, sunMaterial);
+        mercury = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
+        venus = new THREE.Mesh(venusGeometry, venusMaterial);
+        earth = new THREE.Mesh(earthGeometry, earthMaterial);
+        mars = new THREE.Mesh(marsGeometry, marsMaterial);
+        jupiter = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
+        saturn = new THREE.Mesh(saturnGeometry, saturnMaterial);
+        uranus = new THREE.Mesh(uranusGeometry, uranusMaterial);
+        neptune = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
+
         sun.position.x = 0;
         mercury.position.z = 16;
         venus.position.z = (16 + 15);
@@ -142,8 +144,10 @@
         var delta = clock.getDelta();
 
         requestAnimationFrame( animate );
-        parent.rotation.y += 0.01;
-        //mercury.rotation.X += 0.04;
+        //parent.rotation.y += 0.01;
+        
+        mercury.position.x += 0.08;
+        mercury.rotation.y += 0.01;
 
         controls.movementSpeed = 20 ;
         controls.update(delta);
